@@ -1,0 +1,86 @@
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  margin: 0;
+}
+body {
+  overflow: hidden;
+}
+
+.welcome {
+  width: 100%;
+  text-align: center;
+}
+.wrapper {
+  position: relative;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  @media only screen and (max-width: 600px) {
+    overflow: overlay;
+  }
+}
+#main,
+.wrapper {
+  height: 100%;
+}
+p {
+  margin: 0;
+}
+
+.EBA {
+  width: 50%;
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  background: linear-gradient(#373737, #232323);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 20px;
+  .menu-group {
+    margin-right: 32px;
+    .menu-items {
+      display: none;
+      padding: 0;
+
+      li {
+        list-style: none;
+        cursor: pointer;
+        margin: 5px 0px;
+        font-family: "Roboto";
+        &::after {
+          content: "⚜";
+          float: right;
+        }
+      }
+    }
+    &:hover {
+      .menu-items {
+        display: block;
+        li {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    & > .title {
+      font-size: 18px;
+      font-family: "Lato";
+      font-weight: bold;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+.grid {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: auto;
+  } 
+  .tile {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+    height: 350px;
+    &.selected {
+      &:after {
+        content: "👦👧";
+        position: absolute;
+        font-size: 60px;
+      }
+      .background::after {
+        opacity: 1;
+      }
+    }
+    .background {
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+
+      &::after {
+        content: "";
+        background-color: rgba(0, 0, 0, 0.428);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        opacity: 0;
+      }
+    }
+    &:hover {
+      .tile-title {
+        background-color: white;
+        transition: background-color 0.8s;
+      }
+      .background {
+        &:after {
+          opacity: 1;
+          transition: opacity 0.1s ease-in-out;
+        }
+      }
+    }
+    .tile-title {
+      position: absolute;
+      bottom: 0;
+      padding: 16px;
+      background-color: rgba(226, 226, 226, 0.64);
+      width: 100%;
+      .tile-subtitle {
+        font-size: small;
+        display: block;
+        &:after {
+          content: " 📌";
+        }
+      }
+    }
+  }
+}
