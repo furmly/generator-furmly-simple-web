@@ -92,7 +92,8 @@ module.exports = {
   devServer: {
     contentBase: [path.resolve(__dirname, "dist")],
     proxy: {
-      "/api": { target: "https://localhost", secure: false }
+      "/api/*": {  target:"http://furmly-demo.herokuapp.com",
+      changeOrigin: true }
     },
     stats: {
       colors: true,

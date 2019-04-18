@@ -1,5 +1,5 @@
-import qs from ("query-string");
-export default {
+const qs = require("query-string");
+module.exports = {
   waitingProcessors: [],
   baseUrl: "",
   preDispatch: function(action) {

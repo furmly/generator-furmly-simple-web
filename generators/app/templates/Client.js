@@ -36,7 +36,7 @@ class Client {
     return _fetch.call(
       this,
       `/api/admin/acl?category=${name || "MAINMENU"}`,
-      secure.call(this)
+      {}
     );
   }
 }

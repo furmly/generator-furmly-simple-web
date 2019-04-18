@@ -1,10 +1,12 @@
 import React from "react";
 import qs from "query-string";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route,withRouter } from "react-router-dom";
 import { routerMiddleware } from "react-router-redux";
 import { createHashHistory } from "history";
 import { persistReducer, persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage/session";
+import {defaultRootReducer} from "<%= component %>";
 <%if (usesTheme) { %>
 import { ThemeProvider } from "<%= component %>";
 import defaultTheme from "./theme";
@@ -25,8 +27,8 @@ class App extends React.PureComponent {
           <div id="main">
            <%if (usesTheme) { %> <ThemeProvider theme={defaultTheme}> <% } %>
             <div className={"wrapper"}>
-
-                <Switch>
+            <Menu openProcess={this.props.openProcess} />
+               <div className="content"> <Switch>
                   <Route
                     path={"/:processId"}
                     component={({ match }) => {
@@ -49,7 +51,7 @@ class App extends React.PureComponent {
                 <h3>Please select a sample form from the menu above.</h3>
               </div>}
               />
-              </Switch>
+              </Switch></div>
             </div>
            <%if (usesTheme){ %> </ThemeProvider> <% } %>
           </div>
