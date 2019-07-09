@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
 const defaultInclude = path.resolve(__dirname, "src");
@@ -66,6 +67,9 @@ module.exports = {
     ]
   },
   target: "web",
+  optimization: {
+    minimize: true
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: "<%= appName %>",
@@ -74,11 +78,15 @@ module.exports = {
       inject: false
     }),
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("development")
+      "process.env.NODE_ENV": JSON.stringify("production")
     }),
+    new MiniCssExtractPlugin({
+        filename: "bundle.css",
+        chunkFilename: "[id].css"
+      }),
     new CopyPlugin([
       { from: furmlyFonts, to: dist, flatten: true },
-      { from: furmly + "\\webfonts\\*", to: dist+"\\webfonts", flatten:true },
+      { from: furmly + "\\webfonts\\*", to: dist+"\\webfonts",flatten:true },
        <%if (hasWorker) { %>
       { from: worker, to: dist, flatten: true }
        <% } %>
@@ -87,19 +95,6 @@ module.exports = {
   resolve: {
     alias: {
       "furmly-controls": path.resolve(__dirname, "src/furmly")
-    }
-  },
-  devtool: "source-map",
-  devServer: {
-    contentBase: [path.resolve(__dirname, "dist")],
-    proxy: {
-      "/api/*": {  target:"http://furmly-demo.herokuapp.com",
-      changeOrigin: true }
-    },
-    stats: {
-      colors: true,
-      chunks: false,
-      children: false
     }
   }
 };

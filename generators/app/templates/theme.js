@@ -4,12 +4,12 @@ injectFontsAndCSSBase(
   "background:rgba(0, 192, 255, 0.25)",
   "background:rgba(0, 192, 255, 0.46);"
 );
-export const inputColor = "white";
+export const inputColor = "black";
 export const labelColor = "black";
-const inputBackgroundColor = "rgb(34, 34, 34)";
+const inputBackgroundColor = "rgb(230, 230, 230)";
 export default {
   labelBackgroundColor: "transparent",
-  secondaryBackgroundColor: "gray",
+  secondaryBackgroundColor: "rgb(230, 230, 230)",
   secondaryColor: "white",
   copyColor: "whitesmoke",
   inputBackgroundColor,
@@ -22,5 +22,5 @@ export default {
   dropDownMenuColor: inputBackgroundColor,
   errorColor: "#ff6565",
   dividerColor: "rgb(28, 27, 47)",
-  highLightColor: "rgba(0, 0, 0, 0.8)"
+  highLightColor: "rgba(0, 0, 0, 0.2)"
 };

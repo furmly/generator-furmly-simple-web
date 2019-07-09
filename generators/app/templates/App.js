@@ -22,6 +22,9 @@ class App extends React.PureComponent {
     alert("we are done!");
     window.location.hash = "";
   }
+  showMessage=(message)=>{
+    window.alert(message);
+  }
   render() {
     return (
           <div id="main">
@@ -41,6 +44,7 @@ class App extends React.PureComponent {
                           currentStep={currentStep}
                           fetchParams={fetchParams}
                           processCompleted={this.completed}
+                          showMessage={this.showMessage}
                         />
                       );}}
                   />
@@ -60,14 +64,6 @@ class App extends React.PureComponent {
 }
 
 
-
-const showMessage = store => next => action => {
-  if (action.type == "SHOW_MESSAGE") {
-    window.alert(action.message);
-    return;
-  }
-  next(action);
-};
 App.pushVisible = true;
 const persistConfig = {
   key: "root",
@@ -78,7 +74,7 @@ const ConfiguredApp = withRouter(
     App,
     { Furmly: { path: "/:id", routeParams: ["id"] } },
     {
-      extraMiddlewares: [routerMiddleware(createHashHistory()), showMessage],
+      extraMiddlewares: [routerMiddleware(createHashHistory())],
       rootReducer: persistReducer(persistConfig, defaultRootReducer),
       storeEnhancer: store => (persistor = persistStore(store))
     }

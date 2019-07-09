@@ -8,7 +8,7 @@ class RestaurantGrid extends React.Component {
   };
   render() {
     return (
-      <div className="grid">
+      <div className="rs-grid">
         {this.props.items.map(x => (
           <div
             className={`tile ${(x.name == this.props.value && "selected") ||
