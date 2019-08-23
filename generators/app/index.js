@@ -135,7 +135,7 @@ module.exports = class extends Generator {
       this._copy("webpack.dev.config.js", "../webpack.dev.config.js", appArgs);
       this._copy(
         "webpack.build.config.js",
-        "./webpack.build.config.js",
+        "../webpack.build.config.js",
         appArgs
       );
       this._copy("index.html", "assets/index.html");
